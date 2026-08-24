@@ -24,7 +24,7 @@
             padding: 20px;
         }
 
-        /* ===== کانتینر اصلی با تم شیک و کلاسیک (الهام از aptwar) ===== */
+        /* ===== کانتینر اصلی با تم شیک و کلاسیک ===== */
         .main-container {
             max-width: 780px;
             width: 100%;
@@ -41,7 +41,7 @@
             position: relative;
         }
 
-        /* خطوط طلایی/نئونی ملایم (مشابه aptwar) */
+        /* خطوط طلایی/نئونی ملایم */
         .main-container::before {
             content: '';
             position: absolute;
@@ -163,7 +163,7 @@
             border-color: rgba(200, 50, 50, 0.1);
         }
 
-        /* ===== گالری عمودی (فقط یک عکس) ===== */
+        /* ===== گالری عمودی ===== */
         .gallery-section {
             margin: 20px 0 10px;
             display: none;
@@ -181,7 +181,7 @@
 
         .gallery-item {
             max-width: 500px;
-            margin: 0 auto;
+            margin: 0 auto 25px;
             background: rgba(16, 10, 22, 0.6);
             border: 1px solid rgba(180, 140, 200, 0.12);
             border-radius: 20px 6px 20px 6px;
@@ -219,7 +219,7 @@
         .gallery-caption p {
             color: #a090a8;
             font-size: 0.95rem;
-            line-height: 1.7;
+            line-height: 1.8;
             font-weight: 300;
             letter-spacing: 0.3px;
         }
@@ -375,13 +375,22 @@
             <span class="title">سوگند هایم</span>
             <span class="badge">🔒 قفل</span>
         </div>
+
+        <!-- گزینه صحبت های دزیا (قفل) -->
+        <div class="menu-item locked" onclick="showDziaPopup()">
+            <span class="icon">🗣️</span>
+            <span class="title">صحبت های دزیا</span>
+            <span class="badge">🔒 قفل</span>
+        </div>
     </div>
 
     <!-- بخش گالری (پنهان) -->
     <div id="gallerySection" class="gallery-section">
+        
+        <!-- عکس 1: اولین عکس با متن عاشقانه -->
         <div class="gallery-item">
             <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260823_145154_720.jpg" 
-                 alt="عکس عاشقانه" 
+                 alt="لحظه‌ای برای همیشه" 
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <div style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
                 <span style="font-size:1.5rem;">🖼️</span><br>
@@ -392,13 +401,133 @@
                 <h3>🌟 لحظه‌ای برای همیشه 🌟</h3>
                 <p>
                     <span class="heart">❤️</span> 
-                    نگاهت را به خاطر دارم، گرمای دستانت را، 
-                    لبخندی که در دلم ماندگار شد. 
+                    یک عمر را با تو بودن را به تمام عمرهای این جهان در تنهایی ترجیح میدم.
+                    در میان تمام مسیرهایی که می‌توانستم بروم،
+                    راهی را انتخاب کردم که به تو ختم می‌شد.
+                    و حالا که تو را دارم،
+                    همه‌ی راه‌ها به خانه می‌رسند.
                     <span class="heart">❤️</span>
-                    <br>
-                    <span style="color:#b098b8; font-size:0.9rem;">
-                        «یک عمر را با تو بودن را به تمام عمرهای این جهان در تنهایی ترجیح میدم.»
-                    </span>
+                </p>
+            </div>
+        </div>
+
+        <!-- عکس 2: چشمان اسما -->
+        <div class="gallery-item">
+            <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260824_175800_623.jpg" 
+                 alt="چشمان اسما" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                <span style="font-size:1.5rem;">🖼️</span><br>
+                عکس در دسترس نیست<br>
+                <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
+            </div>
+            <div class="gallery-caption">
+                <h3>✨ چشمانت، دریچه‌ای به بی‌نهایت ✨</h3>
+                <p>
+                    <span class="heart">❤️</span> 
+                    در چشمانت، آسمانی دیگر می‌بینم،
+                    ستاره‌هایی که هرگز خاموش نمی‌شوند.
+                    نگاهت، شعری است که بی‌کلام خوانده می‌شود،
+                    و من هر روز شیفته‌تر از دیروز می‌شوم.
+                    <span class="heart">❤️</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- عکس 3: چشمان اسما (دوم) -->
+        <div class="gallery-item">
+            <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260824_175800_619.jpg" 
+                 alt="چشمان اسما" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                <span style="font-size:1.5rem;">🖼️</span><br>
+                عکس در دسترس نیست<br>
+                <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
+            </div>
+            <div class="gallery-caption">
+                <h3>🌟 نگاهت، سرآغاز همه‌ی زیبایی‌ها 🌟</h3>
+                <p>
+                    <span class="heart">❤️</span> 
+                    چشمانت را که می‌بینم،
+                    تمام واژه‌ها رنگ می‌بازند.
+                    در عمق نگاهت، آرامشی است که 
+                    هیچ دریا و هیچ آسمانی ندارد.
+                    تو خودت، زیباترین رویای منی.
+                    <span class="heart">❤️</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- عکس 4: بچگی های اسما -->
+        <div class="gallery-item">
+            <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260824_175800_611.jpg" 
+                 alt="بچگی های اسما" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                <span style="font-size:1.5rem;">🖼️</span><br>
+                عکس در دسترس نیست<br>
+                <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
+            </div>
+            <div class="gallery-caption">
+                <h3>🌱 روزهای کودکی، آغاز یک افسانه 🌱</h3>
+                <p>
+                    <span class="heart">🌸</span> 
+                    چه روزهای قشنگی بوده،
+                    وقتی که کوچک بودی و دنیا فقط بازی بود.
+                    حالا که بزرگ شده‌ای،
+                    هنوز هم همان لبخند را داری،
+                    همان نگاه پاک و مهربان را.
+                    بچگی‌هایت، شروع یک قصه‌ی زیبا بود.
+                    <span class="heart">🌸</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- عکس 5: خود دختر با متن عاشقانه -->
+        <div class="gallery-item">
+            <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260824_175800_616.jpg" 
+                 alt="اسما" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                <span style="font-size:1.5rem;">🖼️</span><br>
+                عکس در دسترس نیست<br>
+                <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
+            </div>
+            <div class="gallery-caption">
+                <h3>💫 تو، زیباترین تقدیر من 💫</h3>
+                <p>
+                    <span class="heart">❤️</span> 
+                    در میان تمام انسان‌های روی زمین،
+                    تو را انتخاب کردم،
+                    نه به خاطر زیبایی‌ات،
+                    که به خاطر روح بزرگ و مهربانت.
+                    با تو بودن، یعنی رسیدن به خانه.
+                    <span class="heart">❤️</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- عکس 6: خود دختر با متن عاشقانه -->
+        <div class="gallery-item">
+            <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260824_175800_612.jpg" 
+                 alt="اسما" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                <span style="font-size:1.5rem;">🖼️</span><br>
+                عکس در دسترس نیست<br>
+                <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
+            </div>
+            <div class="gallery-caption">
+                <h3>🌹 تو، خودت یک شعر بی‌پایانی 🌹</h3>
+                <p>
+                    <span class="heart">❤️</span> 
+                    هر بار که تو را می‌بینم،
+                    جهان رنگ دیگری دارد،
+                    مهربان‌تر، زیباتر، رویایی‌تر.
+                    تو فقط یک انسان نیستی،
+                    تو تمام زیبایی‌های عالم هستی
+                    که در یک قاب جمع شده‌اند.
+                    <span class="heart">❤️</span>
                 </p>
             </div>
         </div>
@@ -410,7 +539,7 @@
 
     <!-- فوتر -->
     <div class="footer">
-        <span>✦</span> ساخته شده با عشق <span>✦</span>
+        <span>✦</span> ساخته شده با عشق از طرف ابوالفضل تنگ‌ارمی برای شما <span>✦</span>
     </div>
 </div>
 
@@ -434,9 +563,8 @@
             gallerySection.style.display = 'none';
         };
 
-        // ===== پاپ‌آپ برای گزینه‌های قفل =====
+        // ===== پاپ‌آپ برای گزینه‌های قفل عمومی =====
         window.showLockedPopup = function(title) {
-            // حذف پاپ‌آپ قبلی
             const old = document.querySelector('.popup-overlay');
             if (old) old.remove();
 
@@ -445,15 +573,33 @@
             overlay.innerHTML = `
                 <div class="popup-card">
                     <div class="popup-icon">🔒</div>
-                    <p>این بخش هنوز ساخته نشده عزیزم♡☆</p>
-                    <button class="close-btn" onclick="this.closest('.popup-overlay').remove();">منتظر میمونم</button>
+                    <p>این بخش هنوز ساخته نشده عزیزم</p>
+                    <button class="close-btn" onclick="this.closest('.popup-overlay').remove();">↩ برگشت</button>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+        };
+
+        // ===== پاپ‌آپ مخصوص دزیا =====
+        window.showDziaPopup = function() {
+            const old = document.querySelector('.popup-overlay');
+            if (old) old.remove();
+
+            const overlay = document.createElement('div');
+            overlay.className = 'popup-overlay';
+            overlay.innerHTML = `
+                <div class="popup-card">
+                    <div class="popup-icon">🗣️</div>
+                    <p style="font-size:0.95rem; line-height:1.9;">
+                        سلام دزیا هستم و شخصا فقط این بخش رو طراحی کردم نه چیز های دیگه ای رو ، بزودی این بخش رو فعال خواهم کرد و حرف هایی رو بهتون میگم که برای خودم تجربه ای غمناک شده که برای شما اتفاق نیوفتد ( به امید مرغ و برنج )
+                    </p>
+                    <button class="close-btn" onclick="this.closest('.popup-overlay').remove();">↩ برگشت</button>
                 </div>
             `;
             document.body.appendChild(overlay);
         };
 
         // ===== شروع با منو =====
-        // گالری در ابتدا پنهان است
         gallerySection.style.display = 'none';
 
         console.log('✨ گنجینه اسما آماده است ✨');
