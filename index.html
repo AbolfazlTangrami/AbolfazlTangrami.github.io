@@ -376,6 +376,13 @@
             <span class="badge">🔒 قفل</span>
         </div>
 
+        <!-- گزینه خاطرات لذت بخش (قفل) -->
+        <div class="menu-item locked" onclick="showMemoriesPopup()">
+            <span class="icon">📖</span>
+            <span class="title">خاطرات لذت بخش</span>
+            <span class="badge">🔒 قفل</span>
+        </div>
+
         <!-- گزینه صحبت های دزیا (قفل) -->
         <div class="menu-item locked" onclick="showDziaPopup()">
             <span class="icon">🗣️</span>
@@ -532,6 +539,30 @@
             </div>
         </div>
 
+        <!-- عکس 7: عکس جدید با متن عاشقانه -->
+        <div class="gallery-item">
+            <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260825_001031_623(1).jpg" 
+                 alt="لحظه‌ای ناب" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                <span style="font-size:1.5rem;">🖼️</span><br>
+                عکس در دسترس نیست<br>
+                <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
+            </div>
+            <div class="gallery-caption">
+                <h3>💫 تو، رویای من هستی 💫</h3>
+                <p>
+                    <span class="heart">❤️</span> 
+                    هر روز با تو، یک رویای تازه است،
+                    هر لحظه با تو، یک خاطره‌ی ماندگار.
+                    تو نه فقط عشق منی،
+                    تو تمام دلیل من برای بهتر شدن هستی.
+                    با تو، زندگی یعنی نفس کشیدن در بهشت.
+                    <span class="heart">❤️</span>
+                </p>
+            </div>
+        </div>
+
         <div class="btn-center">
             <button class="btn-back" onclick="hideGallery()">↩ برگشت به منو</button>
         </div>
@@ -539,7 +570,7 @@
 
     <!-- فوتر -->
     <div class="footer">
-        <span>✦</span> ساخته شده با عشق از طرف ابوالفضل تنگ‌ارمی برای شما <span>✦</span>
+        <span>✦</span> ساخته شده با عشق <span>✦</span>
     </div>
 </div>
 
@@ -574,7 +605,26 @@
                 <div class="popup-card">
                     <div class="popup-icon">🔒</div>
                     <p>این بخش هنوز ساخته نشده عزیزم</p>
-                    <button class="close-btn" onclick="this.closest('.popup-overlay').remove();">↩ برگشت</button>
+                    <button class="close-btn" onclick="this.closest('.popup-overlay').remove();">برگشت ↩</button>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+        };
+
+        // ===== پاپ‌آپ مخصوص خاطرات لذت بخش =====
+        window.showMemoriesPopup = function() {
+            const old = document.querySelector('.popup-overlay');
+            if (old) old.remove();
+
+            const overlay = document.createElement('div');
+            overlay.className = 'popup-overlay';
+            overlay.innerHTML = `
+                <div class="popup-card">
+                    <div class="popup-icon">📖</div>
+                    <p style="font-size:0.95rem; line-height:1.9;">
+                        این بخش زمانی باز خواهد شد که اولین خاطره بدون مخفی کاری رو بسازیم
+                    </p>
+                    <button class="close-btn" onclick="this.closest('.popup-overlay').remove();">آماده خاطره سازی هستم</button>
                 </div>
             `;
             document.body.appendChild(overlay);
@@ -591,9 +641,9 @@
                 <div class="popup-card">
                     <div class="popup-icon">🗣️</div>
                     <p style="font-size:0.95rem; line-height:1.9;">
-                        سلام دزیا هستم و شخصا فقط این بخش رو طراحی کردم نه چیز های دیگه ای رو ، بزودی این بخش رو فعال خواهم کرد و حرف هایی رو بهتون میگم که برای خودم تجربه ای غمناک شده که برای شما اتفاق نیوفتد ( به امید مرغ و برنج )
+                        سلام دزیا هستم ، بزودی این بخش رو فعال خواهم کرد و حرف هایی رو بهتون میگم که برای خودم تجربه ای غمناک شده که برای شما اتفاق نیوفتد ( به امید مرغ و برنج )
                     </p>
-                    <button class="close-btn" onclick="this.closest('.popup-overlay').remove();">↩ برگشت</button>
+                    <button class="close-btn" onclick="this.closest('.popup-overlay').remove();">برگشت ↩</button>
                 </div>
             `;
             document.body.appendChild(overlay);
