@@ -174,59 +174,77 @@
             display: block;
         }
 
+        /* ===== بخش سوگند هایم ===== */
+        .oath-section {
+            margin: 20px 0 10px;
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .oath-section.active {
+            display: block;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .gallery-item {
-            max-width: 500px;
-            margin: 0 auto 25px;
+        .oath-card {
             background: rgba(16, 10, 22, 0.6);
             border: 1px solid rgba(180, 140, 200, 0.12);
             border-radius: 20px 6px 20px 6px;
-            overflow: hidden;
+            padding: 30px 28px;
+            margin: 0 auto 25px;
+            max-width: 500px;
             box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease;
+            text-align: center;
         }
 
-        .gallery-item:hover {
+        .oath-card:hover {
             border-color: rgba(180, 140, 200, 0.2);
             box-shadow: 0 12px 50px rgba(0, 0, 0, 0.5);
         }
 
-        .gallery-item img {
-            display: block;
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-bottom: 1px solid rgba(180, 140, 200, 0.05);
-        }
-
-        .gallery-caption {
-            padding: 20px 24px 24px;
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        .gallery-caption h3 {
-            color: #d4c0e0;
-            font-size: 1.1rem;
+        .oath-card .oath-header {
+            font-size: 1.3rem;
             font-weight: 500;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
+            color: #c8a0d8;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(180, 140, 200, 0.08);
+            padding-bottom: 12px;
         }
 
-        .gallery-caption p {
-            color: #a090a8;
-            font-size: 0.95rem;
-            line-height: 1.8;
+        .oath-card .oath-text {
+            color: #d4c0e0;
+            font-size: 1.05rem;
+            line-height: 2.2rem;
             font-weight: 300;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.5px;
+            padding: 10px 0;
         }
 
-        .gallery-caption .heart {
+        .oath-card .oath-text .heart {
             color: #c080b0;
-            margin: 0 4px;
+            margin: 0 6px;
+        }
+
+        .oath-card .oath-sign {
+            color: #887799;
+            font-size: 0.85rem;
+            margin-top: 12px;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        .oath-card.abolfazl {
+            border-left: 3px solid #b888d0;
+        }
+
+        .oath-card.asma {
+            border-right: 3px solid #b888d0;
         }
 
         /* ===== دکمه برگشت ===== */
@@ -338,6 +356,8 @@
             .gallery-item { max-width: 100%; }
             .gallery-caption { padding: 16px 18px; }
             .gallery-caption p { font-size: 0.85rem; }
+            .oath-card { padding: 22px 18px; }
+            .oath-card .oath-text { font-size: 0.95rem; line-height: 2rem; }
         }
 
         /* ===== کلاس‌های کمکی ===== */
@@ -369,11 +389,11 @@
             <span class="badge">🔒 قفل</span>
         </div>
 
-        <!-- گزینه سوگند هایم (قفل) -->
-        <div class="menu-item locked" onclick="showLockedPopup('سوگند هایم')">
+        <!-- گزینه سوگند هایم (باز) -->
+        <div class="menu-item" onclick="showOaths()">
             <span class="icon">⚜️</span>
             <span class="title">سوگند هایم</span>
-            <span class="badge">🔒 قفل</span>
+            <span class="badge">💫 باز</span>
         </div>
 
         <!-- گزینه خاطرات لذت بخش (قفل) -->
@@ -663,9 +683,87 @@
         </div>
     </div>
 
+    <!-- بخش سوگند هایم (پنهان) -->
+    <div id="oathSection" class="oath-section">
+        
+        <!-- کادر ابوالفضل -->
+        <div class="oath-card abolfazl">
+            <div class="oath-header">✦ از سوی ابوالفضل تنگ‌ارمی ✦</div>
+            <div class="oath-text">
+                <span class="heart">❤️</span> 
+                درود بر تو ای زیباترین رویای من،
+                <br>
+                این قلم را به دست گرفتم تا با تمام وجودم بنویسم
+                <br>
+                که در میان این همه انسان،
+                <br>
+                <span style="color: #c8a0d8; font-weight: 500;">تو را برگزیده‌ام</span>
+                <br><br>
+                روزی خواهد آمد که در برابر دیدگان همه،
+                <br>
+                دستت را خواهم گرفت و خواهم گفت:
+                <br>
+                <span style="color: #d4c0e0; font-size: 1.1rem;">
+                «این همان است که قلبم برایش می‌تپد»
+                </span>
+                <br><br>
+                <span style="color: #c080b0; font-size: 1.1rem;">
+                ✦ ازدواج خواهیم کرد ✦
+                </span>
+                <br>
+                و خواستگاری خواهم آمد،
+                <br>
+                با همان شور و شوقی که امروز دارم،
+                <br>
+                با همان عشقی که هیچ پایانی ندارد.
+                <br><br>
+                <span class="heart">❤️</span>
+            </div>
+            <div class="oath-sign">─ با تمام عشق، ابوالفضل ─</div>
+        </div>
+
+        <!-- کادر اسما -->
+        <div class="oath-card asma">
+            <div class="oath-header">✦ از سوی اسما خاوری ✦</div>
+            <div class="oath-text">
+                <span class="heart">🌸</span> 
+                در پاسخ به تمام این عشق و شور،
+                <br>
+                تنها یک کلمه می‌توانم بنویسم:
+                <br><br>
+                <span style="color: #d4c0e0; font-size: 1.3rem; font-weight: 500;">
+                «بله»
+                </span>
+                <br><br>
+                اما نه یک بله‌ی ساده،
+                <br>
+                بلکه بله‌ای از ته دل،
+                <br>
+                بله‌ای که در آن تمام آرزوهایم را گذاشته‌ام.
+                <br><br>
+                <span style="color: #c8a0d8;">
+                منتظر می‌مونم حتی اگر تا قیامت باشه
+                </span>
+                <br><br>
+                چون می‌دانم که ارزشش را دارد،
+                <br>
+                ارزش تو را دارد،
+                <br>
+                ارزش این عشق پاک را.
+                <br><br>
+                <span class="heart">🌸</span>
+            </div>
+            <div class="oath-sign">─ با تمام وجود، اسما ─</div>
+        </div>
+
+        <div class="btn-center">
+            <button class="btn-back" onclick="hideOaths()">↩ برگشت به منو</button>
+        </div>
+    </div>
+
     <!-- فوتر -->
     <div class="footer">
-        <span>✦</span> ساخته شده با عشق از طرف ابوالفضل تنگ‌ارمی <span>✦</span>
+        <span>✦</span> ساخته شده با عشق <span>✦</span>
     </div>
 </div>
 
@@ -674,12 +772,15 @@
         // ===== عناصر =====
         const mainMenu = document.getElementById('mainMenu');
         const gallerySection = document.getElementById('gallerySection');
+        const oathSection = document.getElementById('oathSection');
 
         // ===== نمایش گالری =====
         window.showGallery = function() {
             mainMenu.classList.add('hidden');
             gallerySection.classList.add('active');
             gallerySection.style.display = 'block';
+            oathSection.classList.remove('active');
+            oathSection.style.display = 'none';
         };
 
         // ===== پنهان کردن گالری =====
@@ -687,6 +788,22 @@
             mainMenu.classList.remove('hidden');
             gallerySection.classList.remove('active');
             gallerySection.style.display = 'none';
+        };
+
+        // ===== نمایش سوگند هایم =====
+        window.showOaths = function() {
+            mainMenu.classList.add('hidden');
+            oathSection.classList.add('active');
+            oathSection.style.display = 'block';
+            gallerySection.classList.remove('active');
+            gallerySection.style.display = 'none';
+        };
+
+        // ===== پنهان کردن سوگند هایم =====
+        window.hideOaths = function() {
+            mainMenu.classList.remove('hidden');
+            oathSection.classList.remove('active');
+            oathSection.style.display = 'none';
         };
 
         // ===== پاپ‌آپ برای گزینه‌های قفل عمومی =====
@@ -700,7 +817,7 @@
                 <div class="popup-card">
                     <div class="popup-icon">🔒</div>
                     <p>این بخش هنوز ساخته نشده عزیزم</p>
-                    <button class="close-btn" onclick="this.closest('.popup-overlay').remove();">برگشت</button>
+                    <button class="close-btn" onclick="this.closest('.popup-overlay').remove();">باشه عزیزم</button>
                 </div>
             `;
             document.body.appendChild(overlay);
@@ -719,7 +836,7 @@
                     <p style="font-size:0.95rem; line-height:1.9;">
                         این بخش زمانی باز خواهد شد که اولین خاطره بدون مخفی کاری رو بسازیم
                     </p>
-                    <button class="close-btn" onclick="this.closest('.popup-overlay').remove();">آماده ام</button>
+                    <button class="close-btn" onclick="this.closest('.popup-overlay').remove();">باشه</button>
                 </div>
             `;
             document.body.appendChild(overlay);
@@ -746,6 +863,7 @@
 
         // ===== شروع با منو =====
         gallerySection.style.display = 'none';
+        oathSection.style.display = 'none';
 
         console.log('✨ گنجینه اسما آماده است ✨');
     })();
