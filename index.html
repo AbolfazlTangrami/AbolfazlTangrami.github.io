@@ -190,6 +190,57 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        .gallery-item {
+            max-width: 500px;
+            margin: 0 auto 25px;
+            background: rgba(16, 10, 22, 0.6);
+            border: 1px solid rgba(180, 140, 200, 0.12);
+            border-radius: 20px 6px 20px 6px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            border-color: rgba(180, 140, 200, 0.2);
+            box-shadow: 0 12px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-item img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(180, 140, 200, 0.05);
+        }
+
+        .gallery-caption {
+            padding: 20px 24px 24px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-caption h3 {
+            color: #d4c0e0;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .gallery-caption p {
+            color: #a090a8;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+
+        .gallery-caption .heart {
+            color: #c080b0;
+            margin: 0 4px;
+        }
+
+        /* ===== استایل کارت‌های سوگند ===== */
         .oath-card {
             background: rgba(16, 10, 22, 0.6);
             border: 1px solid rgba(180, 140, 200, 0.12);
@@ -414,12 +465,12 @@
     <!-- بخش گالری (پنهان) -->
     <div id="gallerySection" class="gallery-section">
         
-        <!-- عکس 1: اولین عکس با متن عاشقانه -->
+        <!-- عکس 1: اولین عکس -->
         <div class="gallery-item">
             <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260823_145154_720.jpg" 
                  alt="لحظه‌ای برای همیشه" 
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
                 <span style="font-size:1.5rem;">🖼️</span><br>
                 عکس در دسترس نیست<br>
                 <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
@@ -442,8 +493,8 @@
         <div class="gallery-item">
             <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260824_175800_623.jpg" 
                  alt="چشمان اسما" 
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
                 <span style="font-size:1.5rem;">🖼️</span><br>
                 عکس در دسترس نیست<br>
                 <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
@@ -465,8 +516,8 @@
         <div class="gallery-item">
             <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260824_175800_619.jpg" 
                  alt="چشمان اسما" 
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
                 <span style="font-size:1.5rem;">🖼️</span><br>
                 عکس در دسترس نیست<br>
                 <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
@@ -489,8 +540,8 @@
         <div class="gallery-item">
             <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260824_175800_611.jpg" 
                  alt="بچگی های اسما" 
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
                 <span style="font-size:1.5rem;">🖼️</span><br>
                 عکس در دسترس نیست<br>
                 <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
@@ -514,8 +565,8 @@
         <div class="gallery-item">
             <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260824_175800_616.jpg" 
                  alt="اسما" 
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
                 <span style="font-size:1.5rem;">🖼️</span><br>
                 عکس در دسترس نیست<br>
                 <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
@@ -538,8 +589,8 @@
         <div class="gallery-item">
             <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260824_175800_612.jpg" 
                  alt="اسما" 
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
                 <span style="font-size:1.5rem;">🖼️</span><br>
                 عکس در دسترس نیست<br>
                 <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
@@ -559,12 +610,12 @@
             </div>
         </div>
 
-        <!-- عکس 7: عکس جدید -->
+        <!-- عکس 7 -->
         <div class="gallery-item">
             <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260825_001031_623(1).jpg" 
                  alt="لحظه‌ای ناب" 
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
                 <span style="font-size:1.5rem;">🖼️</span><br>
                 عکس در دسترس نیست<br>
                 <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
@@ -583,12 +634,12 @@
             </div>
         </div>
 
-        <!-- عکس 8: IMG_20260825_173016_333.jpg -->
+        <!-- عکس 8 -->
         <div class="gallery-item">
             <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260825_173016_333.jpg" 
                  alt="لحظه‌ای زیبا" 
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
                 <span style="font-size:1.5rem;">🖼️</span><br>
                 عکس در دسترس نیست<br>
                 <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
@@ -607,12 +658,12 @@
             </div>
         </div>
 
-        <!-- عکس 9: IMG_20260825_002454_778.jpg -->
+        <!-- عکس 9 -->
         <div class="gallery-item">
             <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260825_002454_778.jpg" 
                  alt="لحظه‌ای ناب" 
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
                 <span style="font-size:1.5rem;">🖼️</span><br>
                 عکس در دسترس نیست<br>
                 <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
@@ -630,12 +681,12 @@
             </div>
         </div>
 
-        <!-- عکس 10: IMG_20260825_002451_226.jpg -->
+        <!-- عکس 10 -->
         <div class="gallery-item">
             <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260825_002451_226.jpg" 
                  alt="لحظه‌ای خاص" 
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
                 <span style="font-size:1.5rem;">🖼️</span><br>
                 عکس در دسترس نیست<br>
                 <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
@@ -654,12 +705,12 @@
             </div>
         </div>
 
-        <!-- عکس 11: IMG_20260825_002444_569.jpg -->
+        <!-- عکس 11 -->
         <div class="gallery-item">
             <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260825_002444_569.jpg" 
                  alt="لحظه‌ای ماندگار" 
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
                 <span style="font-size:1.5rem;">🖼️</span><br>
                 عکس در دسترس نیست<br>
                 <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
@@ -817,7 +868,7 @@
                 <div class="popup-card">
                     <div class="popup-icon">🔒</div>
                     <p>این بخش هنوز ساخته نشده عزیزم</p>
-                    <button class="close-btn" onclick="this.closest('.popup-overlay').remove();">باشه عزیزم</button>
+                    <button class="close-btn" onclick="this.closest('.popup-overlay').remove();">برگشت </button>
                 </div>
             `;
             document.body.appendChild(overlay);
