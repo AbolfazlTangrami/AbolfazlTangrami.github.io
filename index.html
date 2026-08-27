@@ -41,7 +41,6 @@
             position: relative;
         }
 
-        /* خطوط طلایی/نئونی ملایم */
         .main-container::before {
             content: '';
             position: absolute;
@@ -163,6 +162,54 @@
             border-color: rgba(200, 50, 50, 0.1);
         }
 
+        /* ===== گالری - زیرمنو ===== */
+        .gallery-submenu {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px 0 25px;
+        }
+
+        .gallery-submenu .sub-btn {
+            background: rgba(20, 12, 28, 0.5);
+            border: 1px solid rgba(180, 140, 200, 0.1);
+            border-radius: 40px;
+            padding: 12px 30px;
+            color: #b098b8;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+        }
+
+        .gallery-submenu .sub-btn:hover {
+            background: rgba(30, 18, 40, 0.6);
+            border-color: rgba(180, 140, 200, 0.2);
+            color: #d4c0e0;
+            transform: translateY(-2px);
+        }
+
+        .gallery-submenu .sub-btn.active {
+            background: rgba(180, 140, 200, 0.08);
+            border-color: rgba(180, 140, 200, 0.2);
+            color: #d4c0e0;
+            box-shadow: 0 0 30px rgba(180, 140, 200, 0.03);
+        }
+
+        .gallery-submenu .sub-btn.locked {
+            opacity: 0.6;
+            cursor: default;
+        }
+
+        .gallery-submenu .sub-btn.locked:hover {
+            transform: none;
+            background: rgba(20, 12, 28, 0.5);
+            border-color: rgba(180, 140, 200, 0.1);
+            color: #b098b8;
+        }
+
         /* ===== گالری عمودی ===== */
         .gallery-section {
             margin: 20px 0 10px;
@@ -171,6 +218,14 @@
         }
 
         .gallery-section.active {
+            display: block;
+        }
+
+        .gallery-content {
+            display: none;
+        }
+
+        .gallery-content.active {
             display: block;
         }
 
@@ -409,6 +464,8 @@
             .gallery-caption p { font-size: 0.85rem; }
             .oath-card { padding: 22px 18px; }
             .oath-card .oath-text { font-size: 0.95rem; line-height: 2rem; }
+            .gallery-submenu { gap: 12px; }
+            .gallery-submenu .sub-btn { padding: 10px 20px; font-size: 0.9rem; }
         }
 
         /* ===== کلاس‌های کمکی ===== */
@@ -465,273 +522,295 @@
     <!-- بخش گالری (پنهان) -->
     <div id="gallerySection" class="gallery-section">
         
-        <!-- عکس 1: اولین عکس -->
-        <div class="gallery-item">
-            <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260823_145154_720.jpg" 
-                 alt="لحظه‌ای برای همیشه" 
-                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
-            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
-                <span style="font-size:1.5rem;">🖼️</span><br>
-                عکس در دسترس نیست<br>
-                <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
+        <!-- زیرمنو -->
+        <div class="gallery-submenu">
+            <button class="sub-btn active" onclick="showGalleryPhotos()">📸 عکس ها</button>
+            <button class="sub-btn locked" onclick="showLockedPopup('فیلم ها')"> فیلم ها 🔒</button>
+        </div>
+
+        <!-- محتوای عکس‌ها -->
+        <div id="galleryPhotos" class="gallery-content active">
+            
+            <!-- عکس 1 -->
+            <div class="gallery-item">
+                <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260823_145154_720.jpg" 
+                     alt="لحظه‌ای برای همیشه" 
+                     onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+                <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                    <span style="font-size:1.5rem;">🖼️</span><br>
+                    عکس در دسترس نیست<br>
+                    <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
+                </div>
+                <div class="gallery-caption">
+                    <h3>🌟 لحظه‌ای برای همیشه 🌟</h3>
+                    <p>
+                        <span class="heart">❤️</span> 
+                        یک عمر را با تو بودن را به تمام عمرهای این جهان در تنهایی ترجیح میدم.
+                        در میان تمام مسیرهایی که می‌توانستم بروم،
+                        راهی را انتخاب کردم که به تو ختم می‌شد.
+                        و حالا که تو را دارم،
+                        همه‌ی راه‌ها به خانه می‌رسند.
+                        <span class="heart">❤️</span>
+                    </p>
+                </div>
             </div>
-            <div class="gallery-caption">
-                <h3>🌟 لحظه‌ای برای همیشه 🌟</h3>
-                <p>
-                    <span class="heart">❤️</span> 
-                    یک عمر را با تو بودن را به تمام عمرهای این جهان در تنهایی ترجیح میدم.
-                    در میان تمام مسیرهایی که می‌توانستم بروم،
-                    راهی را انتخاب کردم که به تو ختم می‌شد.
-                    و حالا که تو را دارم،
-                    همه‌ی راه‌ها به خانه می‌رسند.
-                    <span class="heart">❤️</span>
-                </p>
+
+            <!-- عکس 2 -->
+            <div class="gallery-item">
+                <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260824_175800_623.jpg" 
+                     alt="چشمان اسما" 
+                     onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+                <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                    <span style="font-size:1.5rem;">🖼️</span><br>
+                    عکس در دسترس نیست<br>
+                    <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
+                </div>
+                <div class="gallery-caption">
+                    <h3>✨ چشمانت، دریچه‌ای به بی‌نهایت ✨</h3>
+                    <p>
+                        <span class="heart">❤️</span> 
+                        در چشمانت، آسمانی دیگر می‌بینم،
+                        ستاره‌هایی که هرگز خاموش نمی‌شوند.
+                        نگاهت، شعری است که بی‌کلام خوانده می‌شود،
+                        و من هر روز شیفته‌تر از دیروز می‌شوم.
+                        <span class="heart">❤️</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- عکس 3 -->
+            <div class="gallery-item">
+                <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260824_175800_619.jpg" 
+                     alt="چشمان اسما" 
+                     onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+                <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                    <span style="font-size:1.5rem;">🖼️</span><br>
+                    عکس در دسترس نیست<br>
+                    <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
+                </div>
+                <div class="gallery-caption">
+                    <h3>🌟 نگاهت، سرآغاز همه‌ی زیبایی‌ها 🌟</h3>
+                    <p>
+                        <span class="heart">❤️</span> 
+                        چشمانت را که می‌بینم،
+                        تمام واژه‌ها رنگ می‌بازند.
+                        در عمق نگاهت، آرامشی است که 
+                        هیچ دریا و هیچ آسمانی ندارد.
+                        تو خودت، زیباترین رویای منی.
+                        <span class="heart">❤️</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- عکس 4 -->
+            <div class="gallery-item">
+                <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260824_175800_611.jpg" 
+                     alt="بچگی های اسما" 
+                     onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+                <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                    <span style="font-size:1.5rem;">🖼️</span><br>
+                    عکس در دسترس نیست<br>
+                    <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
+                </div>
+                <div class="gallery-caption">
+                    <h3>🌱 روزهای کودکی، آغاز یک افسانه 🌱</h3>
+                    <p>
+                        <span class="heart">🌸</span> 
+                        چه روزهای قشنگی بوده،
+                        وقتی که کوچک بودی و دنیا فقط بازی بود.
+                        حالا که بزرگ شده‌ای،
+                        هنوز هم همان لبخند را داری،
+                        همان نگاه پاک و مهربان را.
+                        بچگی‌هایت، شروع یک قصه‌ی زیبا بود.
+                        <span class="heart">🌸</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- عکس 5 -->
+            <div class="gallery-item">
+                <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260824_175800_616.jpg" 
+                     alt="اسما" 
+                     onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+                <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                    <span style="font-size:1.5rem;">🖼️</span><br>
+                    عکس در دسترس نیست<br>
+                    <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
+                </div>
+                <div class="gallery-caption">
+                    <h3>💫 تو، زیباترین تقدیر من 💫</h3>
+                    <p>
+                        <span class="heart">❤️</span> 
+                        در میان تمام انسان‌های روی زمین،
+                        تو را انتخاب کردم،
+                        نه به خاطر زیبایی‌ات،
+                        که به خاطر روح بزرگ و مهربانت.
+                        با تو بودن، یعنی رسیدن به خانه.
+                        <span class="heart">❤️</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- عکس 6 -->
+            <div class="gallery-item">
+                <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260824_175800_612.jpg" 
+                     alt="اسما" 
+                     onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+                <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                    <span style="font-size:1.5rem;">🖼️</span><br>
+                    عکس در دسترس نیست<br>
+                    <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
+                </div>
+                <div class="gallery-caption">
+                    <h3>🌹 تو، خودت یک شعر بی‌پایانی 🌹</h3>
+                    <p>
+                        <span class="heart">❤️</span> 
+                        هر بار که تو را می‌بینم،
+                        جهان رنگ دیگری دارد،
+                        مهربان‌تر، زیباتر، رویایی‌تر.
+                        تو فقط یک انسان نیستی،
+                        تو تمام زیبایی‌های عالم هستی
+                        که در یک قاب جمع شده‌اند.
+                        <span class="heart">❤️</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- عکس 7 -->
+            <div class="gallery-item">
+                <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260825_001031_623(1).jpg" 
+                     alt="لحظه‌ای ناب" 
+                     onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+                <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                    <span style="font-size:1.5rem;">🖼️</span><br>
+                    عکس در دسترس نیست<br>
+                    <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
+                </div>
+                <div class="gallery-caption">
+                    <h3>💫 تو، رویای من هستی 💫</h3>
+                    <p>
+                        <span class="heart">❤️</span> 
+                        هر روز با تو، یک رویای تازه است،
+                        هر لحظه با تو، یک خاطره‌ی ماندگار.
+                        تو نه فقط عشق منی،
+                        تو تمام دلیل من برای بهتر شدن هستی.
+                        با تو، زندگی یعنی نفس کشیدن در بهشت.
+                        <span class="heart">❤️</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- عکس 8 -->
+            <div class="gallery-item">
+                <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260825_173016_333.jpg" 
+                     alt="لحظه‌ای زیبا" 
+                     onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+                <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                    <span style="font-size:1.5rem;">🖼️</span><br>
+                    عکس در دسترس نیست<br>
+                    <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
+                </div>
+                <div class="gallery-caption">
+                    <h3>✨ تو، قشنگ‌ترین لحظه‌های منی ✨</h3>
+                    <p>
+                        <span class="heart">❤️</span> 
+                        در میان شلوغی روزهایم،
+                        تو آرامشی که همیشه می‌خواستم.
+                        نگاهت، لبخندت، حضورت،
+                        همه چیز را قشنگ‌تر می‌کند.
+                        تو دلیل خوشبختی منی.
+                        <span class="heart">❤️</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- عکس 9 -->
+            <div class="gallery-item">
+                <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260825_002454_778.jpg" 
+                     alt="لحظه‌ای ناب" 
+                     onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+                <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                    <span style="font-size:1.5rem;">🖼️</span><br>
+                    عکس در دسترس نیست<br>
+                    <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
+                </div>
+                <div class="gallery-caption">
+                    <h3>🌙 شب‌های من با تو روشن است 🌙</h3>
+                    <p>
+                        <span class="heart">❤️</span> 
+                        شب‌های بی‌تو، تاریک و سردند،
+                        اما با یاد تو، مهتابی‌ترین شب‌ها را دارم.
+                        تو چراغ راه منی،
+                        در هر تاریکی، نور تو را می‌بینم.
+                        <span class="heart">❤️</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- عکس 10 -->
+            <div class="gallery-item">
+                <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260825_002451_226.jpg" 
+                     alt="لحظه‌ای خاص" 
+                     onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+                <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                    <span style="font-size:1.5rem;">🖼️</span><br>
+                    عکس در دسترس نیست<br>
+                    <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
+                </div>
+                <div class="gallery-caption">
+                    <h3>💕 با تو، هر لحظه قشنگ است 💕</h3>
+                    <p>
+                        <span class="heart">❤️</span> 
+                        گاهی یک نگاه، یک لبخند،
+                        یک لحظه ساده با تو،
+                        تمام روزم را می‌سازد.
+                        تو معجزه‌ای در زندگی منی،
+                        و من هر روز شکرگزار تو هستم.
+                        <span class="heart">❤️</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- عکس 11 -->
+            <div class="gallery-item">
+                <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260825_002444_569.jpg" 
+                     alt="لحظه‌ای ماندگار" 
+                     onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
+                <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
+                    <span style="font-size:1.5rem;">🖼️</span><br>
+                    عکس در دسترس نیست<br>
+                    <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
+                </div>
+                <div class="gallery-caption">
+                    <h3>🌸 تو، زیباترین فصل زندگی منی 🌸</h3>
+                    <p>
+                        <span class="heart">❤️</span> 
+                        بهار با تو معنا دارد،
+                        تابستان با تو گرم‌تر است،
+                        پاییز با تو رنگی‌تر،
+                        و زمستان با تو، بهاری دیگر است.
+                        تو تمام فصل‌های زیبای منی.
+                        <span class="heart">❤️</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="btn-center">
+                <button class="btn-back" onclick="hideGallery()">↩ برگشت به منو</button>
             </div>
         </div>
 
-        <!-- عکس 2: چشمان اسما -->
-        <div class="gallery-item">
-            <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260824_175800_623.jpg" 
-                 alt="چشمان اسما" 
-                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
-            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
-                <span style="font-size:1.5rem;">🖼️</span><br>
-                عکس در دسترس نیست<br>
-                <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
+        <!-- محتوای فیلم‌ها (خالی - فقط برای نمایش) -->
+        <div id="galleryVideos" class="gallery-content">
+            <div style="text-align:center; color:#887799; padding:40px 20px;">
+                <span style="font-size:2rem;">🎬</span><br>
+                <span style="font-size:1.1rem; color:#665566;">بخش فیلم ها به زودی فعال می‌شود</span>
             </div>
-            <div class="gallery-caption">
-                <h3>✨ چشمانت، دریچه‌ای به بی‌نهایت ✨</h3>
-                <p>
-                    <span class="heart">❤️</span> 
-                    در چشمانت، آسمانی دیگر می‌بینم،
-                    ستاره‌هایی که هرگز خاموش نمی‌شوند.
-                    نگاهت، شعری است که بی‌کلام خوانده می‌شود،
-                    و من هر روز شیفته‌تر از دیروز می‌شوم.
-                    <span class="heart">❤️</span>
-                </p>
+            <div class="btn-center">
+                <button class="btn-back" onclick="hideGallery()">↩ برگشت به منو</button>
             </div>
         </div>
 
-        <!-- عکس 3: چشمان اسما (دوم) -->
-        <div class="gallery-item">
-            <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260824_175800_619.jpg" 
-                 alt="چشمان اسما" 
-                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
-            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
-                <span style="font-size:1.5rem;">🖼️</span><br>
-                عکس در دسترس نیست<br>
-                <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
-            </div>
-            <div class="gallery-caption">
-                <h3>🌟 نگاهت، سرآغاز همه‌ی زیبایی‌ها 🌟</h3>
-                <p>
-                    <span class="heart">❤️</span> 
-                    چشمانت را که می‌بینم،
-                    تمام واژه‌ها رنگ می‌بازند.
-                    در عمق نگاهت، آرامشی است که 
-                    هیچ دریا و هیچ آسمانی ندارد.
-                    تو خودت، زیباترین رویای منی.
-                    <span class="heart">❤️</span>
-                </p>
-            </div>
-        </div>
-
-        <!-- عکس 4: بچگی های اسما -->
-        <div class="gallery-item">
-            <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260824_175800_611.jpg" 
-                 alt="بچگی های اسما" 
-                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
-            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
-                <span style="font-size:1.5rem;">🖼️</span><br>
-                عکس در دسترس نیست<br>
-                <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
-            </div>
-            <div class="gallery-caption">
-                <h3>🌱 روزهای کودکی، آغاز یک افسانه 🌱</h3>
-                <p>
-                    <span class="heart">🌸</span> 
-                    چه روزهای قشنگی بوده،
-                    وقتی که کوچک بودی و دنیا فقط بازی بود.
-                    حالا که بزرگ شده‌ای،
-                    هنوز هم همان لبخند را داری،
-                    همان نگاه پاک و مهربان را.
-                    بچگی‌هایت، شروع یک قصه‌ی زیبا بود.
-                    <span class="heart">🌸</span>
-                </p>
-            </div>
-        </div>
-
-        <!-- عکس 5: خود دختر با متن عاشقانه -->
-        <div class="gallery-item">
-            <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260824_175800_616.jpg" 
-                 alt="اسما" 
-                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
-            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
-                <span style="font-size:1.5rem;">🖼️</span><br>
-                عکس در دسترس نیست<br>
-                <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
-            </div>
-            <div class="gallery-caption">
-                <h3>💫 تو، زیباترین تقدیر من 💫</h3>
-                <p>
-                    <span class="heart">❤️</span> 
-                    در میان تمام انسان‌های روی زمین،
-                    تو را انتخاب کردم،
-                    نه به خاطر زیبایی‌ات،
-                    که به خاطر روح بزرگ و مهربانت.
-                    با تو بودن، یعنی رسیدن به خانه.
-                    <span class="heart">❤️</span>
-                </p>
-            </div>
-        </div>
-
-        <!-- عکس 6: خود دختر با متن عاشقانه -->
-        <div class="gallery-item">
-            <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260824_175800_612.jpg" 
-                 alt="اسما" 
-                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
-            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
-                <span style="font-size:1.5rem;">🖼️</span><br>
-                عکس در دسترس نیست<br>
-                <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
-            </div>
-            <div class="gallery-caption">
-                <h3>🌹 تو، خودت یک شعر بی‌پایانی 🌹</h3>
-                <p>
-                    <span class="heart">❤️</span> 
-                    هر بار که تو را می‌بینم،
-                    جهان رنگ دیگری دارد،
-                    مهربان‌تر، زیباتر، رویایی‌تر.
-                    تو فقط یک انسان نیستی،
-                    تو تمام زیبایی‌های عالم هستی
-                    که در یک قاب جمع شده‌اند.
-                    <span class="heart">❤️</span>
-                </p>
-            </div>
-        </div>
-
-        <!-- عکس 7 -->
-        <div class="gallery-item">
-            <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260825_001031_623(1).jpg" 
-                 alt="لحظه‌ای ناب" 
-                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
-            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
-                <span style="font-size:1.5rem;">🖼️</span><br>
-                عکس در دسترس نیست<br>
-                <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
-            </div>
-            <div class="gallery-caption">
-                <h3>💫 تو، رویای من هستی 💫</h3>
-                <p>
-                    <span class="heart">❤️</span> 
-                    هر روز با تو، یک رویای تازه است،
-                    هر لحظه با تو، یک خاطره‌ی ماندگار.
-                    تو نه فقط عشق منی،
-                    تو تمام دلیل من برای بهتر شدن هستی.
-                    با تو، زندگی یعنی نفس کشیدن در بهشت.
-                    <span class="heart">❤️</span>
-                </p>
-            </div>
-        </div>
-
-        <!-- عکس 8 -->
-        <div class="gallery-item">
-            <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260825_173016_333.jpg" 
-                 alt="لحظه‌ای زیبا" 
-                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
-            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
-                <span style="font-size:1.5rem;">🖼️</span><br>
-                عکس در دسترس نیست<br>
-                <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
-            </div>
-            <div class="gallery-caption">
-                <h3>✨ تو، قشنگ‌ترین لحظه‌های منی ✨</h3>
-                <p>
-                    <span class="heart">❤️</span> 
-                    در میان شلوغی روزهایم،
-                    تو آرامشی که همیشه می‌خواستم.
-                    نگاهت، لبخندت، حضورت،
-                    همه چیز را قشنگ‌تر می‌کند.
-                    تو دلیل خوشبختی منی.
-                    <span class="heart">❤️</span>
-                </p>
-            </div>
-        </div>
-
-        <!-- عکس 9 -->
-        <div class="gallery-item">
-            <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260825_002454_778.jpg" 
-                 alt="لحظه‌ای ناب" 
-                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
-            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
-                <span style="font-size:1.5rem;">🖼️</span><br>
-                عکس در دسترس نیست<br>
-                <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
-            </div>
-            <div class="gallery-caption">
-                <h3>🌙 شب‌های من با تو روشن است 🌙</h3>
-                <p>
-                    <span class="heart">❤️</span> 
-                    شب‌های بی‌تو، تاریک و سردند،
-                    اما با یاد تو، مهتابی‌ترین شب‌ها را دارم.
-                    تو چراغ راه منی،
-                    در هر تاریکی، نور تو را می‌بینم.
-                    <span class="heart">❤️</span>
-                </p>
-            </div>
-        </div>
-
-        <!-- عکس 10 -->
-        <div class="gallery-item">
-            <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260825_002451_226.jpg" 
-                 alt="لحظه‌ای خاص" 
-                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
-            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
-                <span style="font-size:1.5rem;">🖼️</span><br>
-                عکس در دسترس نیست<br>
-                <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
-            </div>
-            <div class="gallery-caption">
-                <h3>💕 با تو، هر لحظه قشنگ است 💕</h3>
-                <p>
-                    <span class="heart">❤️</span> 
-                    گاهی یک نگاه، یک لبخند،
-                    یک لحظه ساده با تو،
-                    تمام روزم را می‌سازد.
-                    تو معجزه‌ای در زندگی منی،
-                    و من هر روز شکرگزار تو هستم.
-                    <span class="heart">❤️</span>
-                </p>
-            </div>
-        </div>
-
-        <!-- عکس 11 -->
-        <div class="gallery-item">
-            <img src="https://raw.githubusercontent.com/AbolfazlTangrami/AbolfazlTangrami.github.io/main/IMG_20260825_002444_569.jpg" 
-                 alt="لحظه‌ای ماندگار" 
-                 onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='block';">
-            <div class="fallback" style="display:none; color:#887799; padding:30px 20px; text-align:center; background:#0e0812;">
-                <span style="font-size:1.5rem;">🖼️</span><br>
-                عکس در دسترس نیست<br>
-                <span style="font-size:0.8rem; color:#665566;">لطفاً فیلترشکن را روشن کنید</span>
-            </div>
-            <div class="gallery-caption">
-                <h3>🌸 تو، زیباترین فصل زندگی منی 🌸</h3>
-                <p>
-                    <span class="heart">❤️</span> 
-                    بهار با تو معنا دارد،
-                    تابستان با تو گرم‌تر است،
-                    پاییز با تو رنگی‌تر،
-                    و زمستان با تو، بهاری دیگر است.
-                    تو تمام فصل‌های زیبای منی.
-                    <span class="heart">❤️</span>
-                </p>
-            </div>
-        </div>
-
-        <div class="btn-center">
-            <button class="btn-back" onclick="hideGallery()">↩ برگشت به منو</button>
-        </div>
     </div>
 
     <!-- بخش سوگند هایم (پنهان) -->
@@ -824,6 +903,8 @@
         const mainMenu = document.getElementById('mainMenu');
         const gallerySection = document.getElementById('gallerySection');
         const oathSection = document.getElementById('oathSection');
+        const galleryPhotos = document.getElementById('galleryPhotos');
+        const galleryVideos = document.getElementById('galleryVideos');
 
         // ===== نمایش گالری =====
         window.showGallery = function() {
@@ -832,6 +913,8 @@
             gallerySection.style.display = 'block';
             oathSection.classList.remove('active');
             oathSection.style.display = 'none';
+            // پیش‌فرض نمایش عکس‌ها
+            showGalleryPhotos();
         };
 
         // ===== پنهان کردن گالری =====
@@ -839,6 +922,24 @@
             mainMenu.classList.remove('hidden');
             gallerySection.classList.remove('active');
             gallerySection.style.display = 'none';
+        };
+
+        // ===== نمایش عکس‌ها =====
+        window.showGalleryPhotos = function() {
+            galleryPhotos.classList.add('active');
+            galleryPhotos.style.display = 'block';
+            galleryVideos.classList.remove('active');
+            galleryVideos.style.display = 'none';
+            // به‌روزرسانی دکمه‌های زیرمنو
+            document.querySelectorAll('.gallery-submenu .sub-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector('.gallery-submenu .sub-btn:first-child').classList.add('active');
+        };
+
+        // ===== نمایش فیلم‌ها (قفل) =====
+        window.showGalleryVideos = function() {
+            showLockedPopup('فیلم ها');
         };
 
         // ===== نمایش سوگند هایم =====
@@ -857,18 +958,23 @@
             oathSection.style.display = 'none';
         };
 
-        // ===== پاپ‌آپ برای گزینه‌های قفل عمومی =====
+        // ===== پاپ‌آپ برای گزینه‌های قفل =====
         window.showLockedPopup = function(title) {
             const old = document.querySelector('.popup-overlay');
             if (old) old.remove();
+
+            let message = 'این بخش هنوز ساخته نشده عزیزم';
+            if (title === 'فیلم ها') {
+                message = '🎬 بخش فیلم ها به زودی فعال می‌شود';
+            }
 
             const overlay = document.createElement('div');
             overlay.className = 'popup-overlay';
             overlay.innerHTML = `
                 <div class="popup-card">
                     <div class="popup-icon">🔒</div>
-                    <p>این بخش هنوز ساخته نشده عزیزم</p>
-                    <button class="close-btn" onclick="this.closest('.popup-overlay').remove();">برگشت </button>
+                    <p>${message}</p>
+                    <button class="close-btn" onclick="this.closest('.popup-overlay').remove();">باشه عزیزم</button>
                 </div>
             `;
             document.body.appendChild(overlay);
