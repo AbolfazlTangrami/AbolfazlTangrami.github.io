@@ -240,6 +240,17 @@
             display: block;
         }
 
+        /* ===== بخش صحبت های دزیا ===== */
+        .dzia-section {
+            margin: 20px 0 10px;
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .dzia-section.active {
+            display: block;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
@@ -353,6 +364,70 @@
             border-right: 3px solid #b888d0;
         }
 
+        /* ===== استایل صحبت های دزیا ===== */
+        .dzia-card {
+            background: rgba(16, 10, 22, 0.6);
+            border: 1px solid rgba(180, 140, 200, 0.12);
+            border-radius: 20px 6px 20px 6px;
+            padding: 30px 28px;
+            margin: 0 auto 25px;
+            max-width: 550px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .dzia-card:hover {
+            border-color: rgba(180, 140, 200, 0.2);
+            box-shadow: 0 12px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .dzia-card .dzia-header {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #c8a0d8;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(180, 140, 200, 0.08);
+            padding-bottom: 12px;
+            text-align: center;
+        }
+
+        .dzia-card .dzia-text {
+            color: #d4c0e0;
+            font-size: 0.98rem;
+            line-height: 2.2rem;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+            padding: 5px 0;
+            white-space: pre-line;
+        }
+
+        .dzia-card .dzia-text .highlight {
+            color: #c8a0d8;
+            font-weight: 500;
+        }
+
+        .dzia-card .dzia-text .emoji {
+            font-size: 1.2rem;
+        }
+
+        .dzia-card .dzia-text .number {
+            color: #b888d0;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .dzia-card .dzia-sign {
+            color: #887799;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            font-style: italic;
+            letter-spacing: 1px;
+            text-align: center;
+            border-top: 1px solid rgba(180, 140, 200, 0.05);
+            padding-top: 15px;
+        }
+
         /* ===== دکمه برگشت ===== */
         .btn-back {
             display: inline-block;
@@ -464,6 +539,8 @@
             .gallery-caption p { font-size: 0.85rem; }
             .oath-card { padding: 22px 18px; }
             .oath-card .oath-text { font-size: 0.95rem; line-height: 2rem; }
+            .dzia-card { padding: 22px 18px; }
+            .dzia-card .dzia-text { font-size: 0.9rem; line-height: 2rem; }
             .gallery-submenu { gap: 12px; }
             .gallery-submenu .sub-btn { padding: 10px 20px; font-size: 0.9rem; }
         }
@@ -511,11 +588,11 @@
             <span class="badge">🔒 قفل</span>
         </div>
 
-        <!-- گزینه صحبت های دزیا (قفل) -->
-        <div class="menu-item locked" onclick="showDziaPopup()">
+        <!-- گزینه صحبت های دزیا (باز) -->
+        <div class="menu-item" onclick="showDzia()">
             <span class="icon">🗣️</span>
             <span class="title">صحبت های دزیا</span>
-            <span class="badge">🔒 قفل</span>
+            <span class="badge">💬 باز</span>
         </div>
     </div>
 
@@ -525,7 +602,7 @@
         <!-- زیرمنو -->
         <div class="gallery-submenu">
             <button class="sub-btn active" onclick="showGalleryPhotos()">📸 عکس ها</button>
-            <button class="sub-btn locked" onclick="showLockedPopup('فیلم ها')"> فیلم ها 🔒</button>
+            <button class="sub-btn locked" onclick="showLockedPopup('فیلم ها')">🎬 فیلم ها 🔒</button>
         </div>
 
         <!-- محتوای عکس‌ها -->
@@ -891,6 +968,96 @@
         </div>
     </div>
 
+    <!-- بخش صحبت های دزیا (پنهان) -->
+    <div id="dziaSection" class="dzia-section">
+        <div class="dzia-card">
+            <div class="dzia-header">🗣️ صحبت های دزیا</div>
+            <div class="dzia-text">
+<span class="highlight">🟣 مقدمه</span>
+
+سلام خوب هستید؟!
+من حسینم‌،‌میشناسید منو
+تمام تلاشم رو میکنم که رابطتون پایدار باشه
+چرا؟ چون مرغ و برنج به حساب ابول میخوام😂
+شوخی میکنم، کلا اسما اولین عشق پسر داییمه و نمیخوام شکست عشقی بخوره
+
+<span class="highlight">🟣 پیام اصلی</span>
+
+خب شروع میکنیم 
+میخواستم تو این مقاله یکم راجب‌گذشته خودم بگم
+من بدی هاشو میگم که شما باید یاد بگیرین اون کارو انجام ندین
+از قدیم گفتن
+گفت ادب از چه اموخته ای؟ پاسخ داد از بی ادبان
+پرسید یعنی چه؟ گفت هرکاری که بی ادبان انجام میدادند من انجام نمیدادم
+
+الان فکر کنین من بی ادبم پس شما کارایی که من کردم رو انجام ندین
+
+<span class="number">۱.</span> اهمیت چیزی بدی نیست، اتفاقا اهمیت مهم ترین پایه رابطست اما وقتی دیدی اهمیت دوطرفه نیست باید بدونی رابطه سرده و رو اتیش گرمش کنی که کار هرکس نیست که یه ۳ یا ۴ باری برای من اتفاق افتاده
+
+<span class="number">۲.</span> توی رابطه حتما حتما حتما‌ حتما یه روز فرا میرسه که جفتتون از هم زده میشین!! این مرحله رو باید رد کنی گل من
+این هم رد کردنش کار هرکسی نیست
+یه صدا تو دلته بهت میگه
+ حوصلم سر رفت ازش 
+چرا خسته نمیشه از حرف زدن؟
+من دیگه سین‌نمیزنم پیامش رو تلفنش رو جواب نمیدم
+اصلا من جدا میشم ازش
+، ببین خوشتیپ این طرز فکر اشتباهه این اتفاق ماهی یبار حداقل اتفاق میوفته باید باهاش مبارزه کنی تا روز خواستگاری
+اندرستند؟؟؟
+
+<span class="number">۳.</span> پشت سرهم حرف نزنین ، برا اینکه بخواین بگین من پسر/دختر برام مهم نیست جلو دوتا بچه که چیزی نمیفهمن نگین بابا رابطه الکیه من اصلا ازش خوشم نمیاد
+یا پیوی این و اون پشت سرهم حرف نزنین و شایعه درست نکنین روهم 
+مثلا الهه رو که یکی از دوستام هک کرد فهمید فحش هم میده پشت سر من
+الان هم که با یه پسر شمالی ایه
+بقول یکی:
+خورشید رو فروخت تا تکه ای شمع بخرد
+
+<span class="number">۴.</span> اگه خدایی نکرده روزی رسید که رابطتون سرد شد و از هم زده شدین یا اسما یا ابول بیاین کار رو جمع کنین
+کنار بیاین باهم، مثلا زن و شوهر اینده همین
+
+<span class="number">۵.</span> اگر کسی راجبتون حرف زد جلوش وایسین و مقاومت کنین تا سوارتون نشده
+
+<span class="number">۶.</span> نه ابول با دختر حرف بزنه نه ابول 
+البته اسما اگه با دختری که خوشش نمیاد ابول نباید باهاش حرف بزنه، اگه اسما به دختر اعتماد داشته باشه اشکالی نداره و برعکسش
+
+<span class="number">۷.</span> پسر و دختر همه میدونیم از ۱۰۰ درصد تشکیل شدن از اون ها ۸۰ درصد ادم های خوبین و ۲۰ درصد نجس و خیانتکار
+هم اسما و هم ابول جفتتون جز اون ۸۰ درصدین
+پس همدیگه رو نفروشین و خیانت نکنین برین با اون ۲۰ درصد که نمیشناسینشون
+
+<span class="number">۸.</span> خواهشا ابجی و داداش مجازی نداشته باشین
+
+<span class="number">۹.</span> پیشنهاد میکنم یه سرگرمی برای خودتون پیدا کنین که تا چند سال انجام بدین و سرگرم شین و الکی چت نکنین
+کلی برنامه بازی دونفره هست که میتونین نصب کنین از راه دور 
+که با کمک هم باید مراحل رو رد کنین مثلا از کوه رد شین و کلی بازی دیگه تو گوشیم بود این بازیا الان هیچکدوم اثری ازشون نیست تو گوشیم که بخوام اسمش رو بگم اما سرچ ساده کنین بازی انلاین کاپلی براتون میلیون ها بازی میاره
+
+<span class="number">۱۰.</span> ازتون خواهش میکنم همچیززز رو از کوچیک ترین چیز تا بزرگترین چیز رو به هم دیگه بگین
+اگه از روش دیگه ای بفهمین اصلا انگار تیر کردن تو قلبت و فشار‌میاد روت طوری که کلت داغ میکنه 
+
+<span class="number">۱۱.</span> هیچوقت شما اول پیوی دختر یا پسر نرین
+اسما پیوی پسر نرو
+ابول پیوی دختر نرو
+
+<span class="number">۱۲.</span> اسما خواهشا هیچوقت نگو این پسر بهتره این پسر شغل داره این پسر خوشتیپه
+میدونم نمیگی اما فکر هم بهش نکن
+الان ابول وضعیتش اینه اما ماشاالله بچه کاریه و من میدونم روزی درامدش از منم بالاتر میره روزانه
+براش حتی کار تو شرکت نفت خارگ هم پیدا کردم
+دیگه چی از این بهتر؟
+ابول توهم نرو بگو این دختر بهتره و... چون خودتم میفهمی اسما چه جور آدمیه من نمیدونم اما خودت سلیقت خوب بود که اسما رو انتخاب کردی از هر لحاظی
+
+<span class="highlight">🟣 حرف پایانی</span>
+
+براتون رابطه خوبی رو ارزومند هستم و امیدوارم بی مشکل و همیشه پایدار باشه؛💫
+اگه حرفی یادم بیاد براتون اضافش میکنم
+
+وقت بخیر، بدرود🌷
+            </div>
+            <div class="dzia-sign">─ با احترام، حسین (دزیا) ─</div>
+        </div>
+
+        <div class="btn-center">
+            <button class="btn-back" onclick="hideDzia()">↩ برگشت به منو</button>
+        </div>
+    </div>
+
     <!-- فوتر -->
     <div class="footer">
         <span>✦</span> ساخته شده با عشق <span>✦</span>
@@ -903,6 +1070,7 @@
         const mainMenu = document.getElementById('mainMenu');
         const gallerySection = document.getElementById('gallerySection');
         const oathSection = document.getElementById('oathSection');
+        const dziaSection = document.getElementById('dziaSection');
         const galleryPhotos = document.getElementById('galleryPhotos');
         const galleryVideos = document.getElementById('galleryVideos');
 
@@ -913,7 +1081,8 @@
             gallerySection.style.display = 'block';
             oathSection.classList.remove('active');
             oathSection.style.display = 'none';
-            // پیش‌فرض نمایش عکس‌ها
+            dziaSection.classList.remove('active');
+            dziaSection.style.display = 'none';
             showGalleryPhotos();
         };
 
@@ -930,16 +1099,10 @@
             galleryPhotos.style.display = 'block';
             galleryVideos.classList.remove('active');
             galleryVideos.style.display = 'none';
-            // به‌روزرسانی دکمه‌های زیرمنو
             document.querySelectorAll('.gallery-submenu .sub-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             document.querySelector('.gallery-submenu .sub-btn:first-child').classList.add('active');
-        };
-
-        // ===== نمایش فیلم‌ها (قفل) =====
-        window.showGalleryVideos = function() {
-            showLockedPopup('فیلم ها');
         };
 
         // ===== نمایش سوگند هایم =====
@@ -949,6 +1112,8 @@
             oathSection.style.display = 'block';
             gallerySection.classList.remove('active');
             gallerySection.style.display = 'none';
+            dziaSection.classList.remove('active');
+            dziaSection.style.display = 'none';
         };
 
         // ===== پنهان کردن سوگند هایم =====
@@ -956,6 +1121,24 @@
             mainMenu.classList.remove('hidden');
             oathSection.classList.remove('active');
             oathSection.style.display = 'none';
+        };
+
+        // ===== نمایش صحبت های دزیا =====
+        window.showDzia = function() {
+            mainMenu.classList.add('hidden');
+            dziaSection.classList.add('active');
+            dziaSection.style.display = 'block';
+            gallerySection.classList.remove('active');
+            gallerySection.style.display = 'none';
+            oathSection.classList.remove('active');
+            oathSection.style.display = 'none';
+        };
+
+        // ===== پنهان کردن صحبت های دزیا =====
+        window.hideDzia = function() {
+            mainMenu.classList.remove('hidden');
+            dziaSection.classList.remove('active');
+            dziaSection.style.display = 'none';
         };
 
         // ===== پاپ‌آپ برای گزینه‌های قفل =====
@@ -999,28 +1182,10 @@
             document.body.appendChild(overlay);
         };
 
-        // ===== پاپ‌آپ مخصوص دزیا =====
-        window.showDziaPopup = function() {
-            const old = document.querySelector('.popup-overlay');
-            if (old) old.remove();
-
-            const overlay = document.createElement('div');
-            overlay.className = 'popup-overlay';
-            overlay.innerHTML = `
-                <div class="popup-card">
-                    <div class="popup-icon">🗣️</div>
-                    <p style="font-size:0.95rem; line-height:1.9;">
-                        سلام دزیا هستم ، بزودی این بخش رو فعال خواهم کرد و حرف هایی رو بهتون میگم که برای خودم تجربه ای غمناک شده که برای شما اتفاق نیوفتد ( به امید مرغ و برنج )
-                    </p>
-                    <button class="close-btn" onclick="this.closest('.popup-overlay').remove();">باشه دزیا</button>
-                </div>
-            `;
-            document.body.appendChild(overlay);
-        };
-
         // ===== شروع با منو =====
         gallerySection.style.display = 'none';
         oathSection.style.display = 'none';
+        dziaSection.style.display = 'none';
 
         console.log('✨ گنجینه اسما آماده است ✨');
     })();
