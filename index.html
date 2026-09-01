@@ -22,9 +22,41 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        /* ===== کانتینر اصلی با تم شیک و کلاسیک ===== */
+        /* ===== پس‌زمینه نئونی با دایره‌های بنفش ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: 
+                /* دایره‌های پررنگ و کمرنگ بنفش */
+                radial-gradient(circle at 10% 5%, rgba(150, 80, 200, 0.12) 0%, transparent 70%),
+                radial-gradient(circle at 85% 15%, rgba(180, 100, 220, 0.07) 0%, transparent 60%),
+                radial-gradient(circle at 20% 40%, rgba(130, 60, 190, 0.10) 0%, transparent 55%),
+                radial-gradient(circle at 70% 55%, rgba(160, 90, 210, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 40% 75%, rgba(140, 70, 200, 0.13) 0%, transparent 60%),
+                radial-gradient(circle at 90% 85%, rgba(170, 100, 220, 0.08) 0%, transparent 55%),
+                radial-gradient(circle at 5% 92%, rgba(120, 50, 180, 0.09) 0%, transparent 50%),
+                radial-gradient(circle at 50% 30%, rgba(200, 130, 230, 0.03) 0%, transparent 70%),
+                radial-gradient(circle at 30% 60%, rgba(180, 110, 210, 0.05) 0%, transparent 60%),
+                radial-gradient(circle at 65% 80%, rgba(150, 80, 200, 0.07) 0%, transparent 50%);
+            animation: neonPulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes neonPulse {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        /* ===== کانتینر اصلی ===== */
         .main-container {
             max-width: 780px;
             width: 100%;
@@ -39,6 +71,7 @@
                 0 0 100px rgba(100, 50, 150, 0.03),
                 inset 0 0 60px rgba(180, 140, 200, 0.02);
             position: relative;
+            z-index: 1;
         }
 
         .main-container::before {
@@ -93,12 +126,109 @@
             font-weight: 300;
         }
 
+        /* ===== منوی همبرگری (۳ خط) ===== */
+        .hamburger-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .hamburger-btn {
+            background: rgba(20, 12, 28, 0.5);
+            border: 1px solid rgba(180, 140, 200, 0.1);
+            border-radius: 10px;
+            padding: 8px 14px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            transition: 0.25s;
+            z-index: 10;
+        }
+
+        .hamburger-btn:hover {
+            background: rgba(30, 18, 40, 0.6);
+            border-color: rgba(180, 140, 200, 0.2);
+        }
+
+        .hamburger-btn span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: #b098b8;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        /* منوی کشویی عمودی */
+        .hamburger-menu {
+            position: absolute;
+            top: 48px;
+            left: 0;
+            right: 0;
+            background: rgba(12, 8, 16, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(180, 140, 200, 0.12);
+            border-radius: 16px 4px 16px 4px;
+            padding: 12px 8px;
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            z-index: 20;
+            animation: slideDown 0.25s ease;
+        }
+
+        .hamburger-menu.active {
+            display: flex;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hamburger-menu .nav-btn {
+            background: rgba(20, 12, 28, 0.4);
+            border: 1px solid rgba(180, 140, 200, 0.08);
+            border-radius: 40px;
+            padding: 10px 20px;
+            color: #b098b8;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            text-align: center;
+            width: 100%;
+        }
+
+        .hamburger-menu .nav-btn:hover {
+            background: rgba(30, 18, 40, 0.6);
+            border-color: rgba(180, 140, 200, 0.2);
+            color: #d4c0e0;
+            transform: translateY(-2px);
+        }
+
+        .hamburger-menu .nav-btn.security {
+            border-color: rgba(200, 50, 50, 0.15);
+            color: #ff6666;
+        }
+
+        .hamburger-menu .nav-btn.security:hover {
+            border-color: rgba(200, 50, 50, 0.3);
+            background: rgba(200, 50, 50, 0.05);
+        }
+
         /* ===== منوی اصلی ===== */
         .menu-grid {
             display: flex;
             flex-direction: column;
             gap: 16px;
-            margin: 25px 0 30px;
+            margin: 15px 0 30px;
         }
 
         .menu-item {
@@ -407,10 +537,6 @@
             font-weight: 500;
         }
 
-        .dzia-card .dzia-text .emoji {
-            font-size: 1.2rem;
-        }
-
         .dzia-card .dzia-text .number {
             color: #b888d0;
             font-weight: 600;
@@ -528,6 +654,195 @@
             border-color: rgba(180, 140, 200, 0.2);
         }
 
+        /* ===== پاپ‌آپ امنیت (رمز) ===== */
+        .security-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .security-overlay.active {
+            display: flex;
+        }
+
+        .security-card {
+            background: #120c18;
+            border: 1px solid rgba(200, 50, 50, 0.3);
+            border-radius: 24px 6px 24px 6px;
+            padding: 35px 30px;
+            max-width: 400px;
+            width: 92%;
+            box-shadow: 0 0 80px rgba(200, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .security-card .security-title {
+            color: #ff4444;
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .security-card .security-desc {
+            color: #ff6666;
+            font-size: 0.95rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            margin-bottom: 18px;
+            line-height: 1.7;
+            opacity: 0.8;
+        }
+
+        .security-card .security-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(200, 50, 50, 0.15);
+            border-radius: 40px;
+            color: #d4c0e0;
+            font-size: 1rem;
+            text-align: center;
+            outline: none;
+            transition: 0.25s;
+            margin: 8px 0 15px;
+        }
+
+        .security-card .security-input:focus {
+            border-color: rgba(200, 50, 50, 0.3);
+            box-shadow: 0 0 30px rgba(200, 0, 0, 0.05);
+        }
+
+        .security-card .security-input::placeholder {
+            color: #665566;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .security-card .security-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 5px;
+        }
+
+        .security-card .sec-btn {
+            padding: 10px 28px;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            font-weight: 400;
+            border: 1px solid rgba(180, 140, 200, 0.1);
+            cursor: pointer;
+            transition: 0.25s;
+            background: rgba(180, 140, 200, 0.05);
+            color: #b098b8;
+            letter-spacing: 1px;
+        }
+
+        .security-card .sec-btn:hover {
+            background: rgba(180, 140, 200, 0.1);
+            border-color: rgba(180, 140, 200, 0.2);
+            color: #d4c0e0;
+        }
+
+        .security-card .sec-btn.primary {
+            background: rgba(200, 50, 50, 0.1);
+            border-color: rgba(200, 50, 50, 0.2);
+            color: #ff6666;
+        }
+
+        .security-card .sec-btn.primary:hover {
+            background: rgba(200, 50, 50, 0.2);
+            border-color: rgba(200, 50, 50, 0.3);
+        }
+
+        .security-card .error-msg {
+            color: #ff4444;
+            font-size: 0.85rem;
+            margin-top: 12px;
+            min-height: 24px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== صفحه خالی امنیت ===== */
+        .security-page {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #0b0b10;
+            background-image: 
+                radial-gradient(circle at 30% 20%, #1a1020 0%, #08050a 90%);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .security-page.active {
+            display: flex;
+        }
+
+        .security-page .sp-header {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #ff4444;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border: 1px solid rgba(200, 50, 50, 0.15);
+            padding: 8px 20px;
+            border-radius: 40px;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .security-page .sp-back {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(180, 140, 200, 0.06);
+            border: 1px solid rgba(180, 140, 200, 0.08);
+            color: #b098b8;
+            padding: 8px 22px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.25s;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .security-page .sp-back:hover {
+            background: rgba(180, 140, 200, 0.1);
+            border-color: rgba(180, 140, 200, 0.2);
+            color: #d4c0e0;
+        }
+
+        .security-page .sp-content {
+            color: #887799;
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-align: center;
+            opacity: 0.5;
+        }
+
+        .security-page .sp-content .icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
+            opacity: 0.3;
+        }
+
         /* ===== ریسپانسیو ===== */
         @media (max-width: 520px) {
             .main-container { padding: 1.5rem 1rem; }
@@ -543,6 +858,9 @@
             .dzia-card .dzia-text { font-size: 0.9rem; line-height: 2rem; }
             .gallery-submenu { gap: 12px; }
             .gallery-submenu .sub-btn { padding: 10px 20px; font-size: 0.9rem; }
+            .hamburger-menu .nav-btn { font-size: 0.8rem; padding: 8px 16px; }
+            .security-card { padding: 25px 20px; }
+            .security-page .sp-content { font-size: 1.4rem; }
         }
 
         /* ===== کلاس‌های کمکی ===== */
@@ -556,6 +874,19 @@
     <div class="header">
         <h1>✦ <span>گنجینه</span> اسما ✦</h1>
         <div class="sub">─ ✧ به یاد ماندنی‌ترین لحظات ✧ ─</div>
+    </div>
+
+    <!-- منوی همبرگری (۳ خط) بالا سمت راست -->
+    <div class="hamburger-wrapper">
+        <div class="hamburger-btn" id="hamburgerBtn" onclick="toggleHamburger()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="hamburger-menu" id="hamburgerMenu">
+            <button class="nav-btn" onclick="showAbolfazl(); closeHamburger();">👤 ابوالفضل تنگ‌ارمی</button>
+            <button class="nav-btn security" onclick="openSecurity(); closeHamburger();">🔐 بخش امنیتی سایت</button>
+        </div>
     </div>
 
     <!-- منوی اصلی -->
@@ -1060,7 +1391,31 @@
 
     <!-- فوتر -->
     <div class="footer">
-        <span>✦</span> ساخته شده با عشق <span>✦</span>
+        <span>✦</span> ساخته شده با عشق از طرف ابوالفضل تنگ‌ارمی <span>✦</span>
+    </div>
+</div>
+
+<!-- ===== پاپ‌آپ امنیت (رمز) ===== -->
+<div id="securityOverlay" class="security-overlay">
+    <div class="security-card">
+        <div class="security-title">🔐 بخش امنیتی سایت</div>
+        <div class="security-desc">لطفا در این بخش فضولی نکنید، زیرا این بخش امنیتی و ادمین پنل سایت است</div>
+        <input type="password" class="security-input" id="securityPass" placeholder="رمز عبور را وارد کنید..." onkeydown="if(event.key==='Enter') checkSecurity()">
+        <div class="security-actions">
+            <button class="sec-btn" onclick="closeSecurity()">لغو</button>
+            <button class="sec-btn primary" onclick="checkSecurity()">ورود</button>
+        </div>
+        <div class="error-msg" id="securityError"></div>
+    </div>
+</div>
+
+<!-- ===== صفحه خالی امنیت ===== -->
+<div id="securityPage" class="security-page">
+    <div class="sp-header">🔐 ادمین پنل</div>
+    <button class="sp-back" onclick="closeSecurityPage()">↩ برگشت</button>
+    <div class="sp-content">
+        <span class="icon">🛡️</span>
+        بزودی ...
     </div>
 </div>
 
@@ -1073,6 +1428,30 @@
         const dziaSection = document.getElementById('dziaSection');
         const galleryPhotos = document.getElementById('galleryPhotos');
         const galleryVideos = document.getElementById('galleryVideos');
+        const securityOverlay = document.getElementById('securityOverlay');
+        const securityPage = document.getElementById('securityPage');
+        const securityPass = document.getElementById('securityPass');
+        const securityError = document.getElementById('securityError');
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+
+        const CORRECT_PASSWORD = 'AboL18';
+
+        // ===== تاگل همبرگر =====
+        window.toggleHamburger = function() {
+            hamburgerMenu.classList.toggle('active');
+        };
+
+        window.closeHamburger = function() {
+            hamburgerMenu.classList.remove('active');
+        };
+
+        // بستن منو با کلیک بیرون
+        document.addEventListener('click', function(e) {
+            if (!hamburgerBtn.contains(e.target) && !hamburgerMenu.contains(e.target)) {
+                hamburgerMenu.classList.remove('active');
+            }
+        });
 
         // ===== نمایش گالری =====
         window.showGallery = function() {
@@ -1084,6 +1463,7 @@
             dziaSection.classList.remove('active');
             dziaSection.style.display = 'none';
             showGalleryPhotos();
+            closeHamburger();
         };
 
         // ===== پنهان کردن گالری =====
@@ -1114,6 +1494,7 @@
             gallerySection.style.display = 'none';
             dziaSection.classList.remove('active');
             dziaSection.style.display = 'none';
+            closeHamburger();
         };
 
         // ===== پنهان کردن سوگند هایم =====
@@ -1132,6 +1513,7 @@
             gallerySection.style.display = 'none';
             oathSection.classList.remove('active');
             oathSection.style.display = 'none';
+            closeHamburger();
         };
 
         // ===== پنهان کردن صحبت های دزیا =====
@@ -1139,6 +1521,58 @@
             mainMenu.classList.remove('hidden');
             dziaSection.classList.remove('active');
             dziaSection.style.display = 'none';
+        };
+
+        // ===== گزینه ابوالفضل تنگ‌ارمی =====
+        window.showAbolfazl = function() {
+            const old = document.querySelector('.popup-overlay');
+            if (old) old.remove();
+
+            const overlay = document.createElement('div');
+            overlay.className = 'popup-overlay';
+            overlay.innerHTML = `
+                <div class="popup-card">
+                    <div class="popup-icon">👤</div>
+                    <p>این بخش بزودی تکمیل میگردد و میتوانید عکس های ابوالفضل رو مشاهده کنید</p>
+                    <button class="close-btn" onclick="this.closest('.popup-overlay').remove();">باشه</button>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+            closeHamburger();
+        };
+
+        // ===== باز کردن بخش امنیت =====
+        window.openSecurity = function() {
+            securityOverlay.classList.add('active');
+            securityPass.value = '';
+            securityError.textContent = '';
+            securityPass.focus();
+            closeHamburger();
+        };
+
+        // ===== بستن بخش امنیت =====
+        window.closeSecurity = function() {
+            securityOverlay.classList.remove('active');
+            securityError.textContent = '';
+        };
+
+        // ===== بررسی رمز =====
+        window.checkSecurity = function() {
+            const pass = securityPass.value;
+            if (pass === CORRECT_PASSWORD) {
+                securityOverlay.classList.remove('active');
+                securityPage.classList.add('active');
+                securityError.textContent = '';
+            } else {
+                securityError.textContent = '❌ رمز عبور اشتباه است';
+                securityPass.value = '';
+                securityPass.focus();
+            }
+        };
+
+        // ===== بستن صفحه امنیت =====
+        window.closeSecurityPage = function() {
+            securityPage.classList.remove('active');
         };
 
         // ===== پاپ‌آپ برای گزینه‌های قفل =====
@@ -1157,10 +1591,11 @@
                 <div class="popup-card">
                     <div class="popup-icon">🔒</div>
                     <p>${message}</p>
-                    <button class="close-btn" onclick="this.closest('.popup-overlay').remove();">باشه عزیزم</button>
+                    <button class="close-btn" onclick="this.closest('.popup-overlay').remove();">باشه </button>
                 </div>
             `;
             document.body.appendChild(overlay);
+            closeHamburger();
         };
 
         // ===== پاپ‌آپ مخصوص خاطرات لذت بخش =====
@@ -1180,16 +1615,19 @@
                 </div>
             `;
             document.body.appendChild(overlay);
+            closeHamburger();
         };
 
         // ===== شروع با منو =====
         gallerySection.style.display = 'none';
         oathSection.style.display = 'none';
         dziaSection.style.display = 'none';
+        securityOverlay.classList.remove('active');
+        securityPage.classList.remove('active');
 
         console.log('✨ گنجینه اسما آماده است ✨');
     })();
 </script>
 
 </body>
-</html>
+                </html>
